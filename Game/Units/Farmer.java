@@ -1,8 +1,8 @@
-package Homework.Seminar_01.Units;
+package Homework.Game.Units;
 
-import Homework.Seminar_01.Names;
+import Homework.Game.Names;
 
-public class Farmer extends BaseUnit {
+public class Farmer extends Unit {
 
     public Farmer(String name, int hp) {
         super(name, hp);
@@ -19,7 +19,7 @@ public class Farmer extends BaseUnit {
         this(Names.getRandName(),100);
     }
     
-    public void working(){
+    public void step(){
         System.out.println(this.className+" "+this.name+" пашет...");
-       }  
+       }
     }

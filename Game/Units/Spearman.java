@@ -1,8 +1,8 @@
-package Homework.Seminar_01.Units;
+package Homework.Game.Units;
 
-import Homework.Seminar_01.Names;
+import Homework.Game.Names;
 
-public class Spearman extends BaseUnit{
+public class Spearman extends Unit{
 
     public Spearman(String name, int hp) {
         super(name, hp);
@@ -20,10 +20,16 @@ public class Spearman extends BaseUnit{
         this(Names.getRandName(), 130);
     }
 
-    public void spearStrike(BaseUnit target){
-        float damade=15+(float)this.strength/10*BaseUnit.diceRoll();
+    public void step(Unit target){
+        float damade=15+(float)this.strength/10*Unit.diceRoll();
         System.out.println(this.name+" удар копьем "+target.getName());
         target.getDamage((int)damade);
+    }
+
+    @Override
+    public void step() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'step'");
     }
 
 

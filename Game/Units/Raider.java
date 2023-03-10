@@ -1,8 +1,8 @@
-package Homework.Seminar_01.Units;
+package Homework.Game.Units;
 
-import Homework.Seminar_01.Names;
+import Homework.Game.Names;
 
-public class Raider extends BaseUnit{
+public class Raider extends Unit{
 
     public Raider(String name, int hp) {
         super(name, hp);
@@ -20,8 +20,8 @@ public class Raider extends BaseUnit{
         this(Names.getRandName(), 120);
     }
 
-    public void daggerStrike(BaseUnit target){
-        float damade=10+(float)this.dexterity/10*(float)this.strength/10*BaseUnit.diceRoll();
+    public void daggerStrike(Unit target){
+        float damade=10+(float)this.dexterity/10*(float)this.strength/10*Unit.diceRoll();
         System.out.println(this.name+" удар кинжалом "+target.getName());
         target.getDamage((int)damade);
     }

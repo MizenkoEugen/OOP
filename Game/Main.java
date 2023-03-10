@@ -1,6 +1,7 @@
 package Homework.Game;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Random;
 
 import Homework.Game.Units.*;
@@ -51,13 +52,28 @@ public class Main {
                     break;
             }
         }
-        System.out.println();
-        list1.forEach(t -> System.out.println(t.getInfo()));
-        System.out.println();
-        list2.forEach(u -> System.out.println(u.getInfo()));
+        // System.out.println();
+        // list1.forEach(t -> System.out.println(t.getInfo()));
+        // System.out.println();
+        // list2.forEach(u -> System.out.println(u.getInfo()));
 
-        // farm1.waiting();
-        // list1[2].step(list2[1]);
+        ArrayList<Unit> allUnits = new ArrayList<>();
+        allUnits.addAll(list1);
+        allUnits.addAll(list2);
+        allUnits.sort(new Comparator<Unit>() {
+            @Override
+            public int compare(Unit u1, Unit u2) {
+                if (u1.getSpeed() == u2.getSpeed())
+                    return 0;
+                else if (u1.getSpeed() < u2.getSpeed())
+                    return 1;
+                else
+                    return -1;
+            }
+        });
+
+        System.out.println();
+        allUnits.forEach(u -> System.out.println(u.getInfo()));
 
         // raider1.step(sniper1);
         // System.out.println(sniper1.getInfo());

@@ -9,7 +9,7 @@ public class Raider extends Unit{
         this.strength=12;
         this.dexterity=14;
         this.viability=10;
-        this.intelligence=10;
+        this.speed=6;
         this.wisdom=10;
         this.charisma=10;
         this.className="Raider"; 

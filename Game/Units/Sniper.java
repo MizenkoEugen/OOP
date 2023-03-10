@@ -7,6 +7,7 @@ public class Sniper extends Shooter {
     public Sniper(String name, int hp) {
         super(name, hp);
         this.dexterity = 16;
+        this.speed = 9;
         this.className = "Sniper";
         this.arrival();
     }

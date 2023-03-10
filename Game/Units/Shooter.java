@@ -8,7 +8,6 @@ public abstract class Shooter extends Unit {
         this.strength = 10;
         this.dexterity = 12;
         this.viability = 10;
-        this.intelligence = 10;
         this.wisdom = 10;
         this.charisma = 8;
         this.arrows = 20;

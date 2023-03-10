@@ -9,7 +9,7 @@ public class Monk extends Unit {
         this.strength = 10;
         this.dexterity = 8;
         this.viability = 10;
-        this.intelligence = 12;
+        this.speed = 5;
         this.wisdom = 14;
         this.charisma = 10;
         this.className = "Monk";

@@ -11,7 +11,7 @@ public class Wizard extends Unit {
         this.strength = 8;
         this.dexterity = 10;
         this.viability = 8;
-        this.intelligence = 14;
+        this.speed = 9;
         this.wisdom = 10;
         this.charisma = 10;
         this.maxMana = 100;

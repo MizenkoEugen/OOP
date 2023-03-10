@@ -7,7 +7,7 @@ public abstract class Unit implements UnitInterface {
    * @param strength     сила
    * @param dexterity    ловкость
    * @param viability    выносливость
-   * @param intelligence интеллект
+   * @param speed        скорость
    * @param wisdom       мудрость
    * @param charisma     харизма
    */
@@ -15,7 +15,7 @@ public abstract class Unit implements UnitInterface {
   protected int strength;
   protected int dexterity;
   protected int viability;
-  protected int intelligence;
+  protected int speed;
   protected int wisdom;
   protected int charisma;
 
@@ -38,9 +38,13 @@ public abstract class Unit implements UnitInterface {
 
   }
 
+  public int getSpeed() {
+    return this.speed;
+}
+
   public String getInfo() {
     String str = this.name + " " + this.className + " hp " + this.hp + " str,dex,via,int: " + this.strength + " "
-        + this.dexterity + " " + this.viability + " " + this.intelligence;
+        + this.dexterity + " " + this.viability + " " + this.speed;
     return str;
   }
 

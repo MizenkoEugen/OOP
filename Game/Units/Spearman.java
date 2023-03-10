@@ -9,7 +9,7 @@ public class Spearman extends Unit{
         this.strength=16;
         this.dexterity=10;
         this.viability=10;
-        this.intelligence=10;
+        this.speed=4;
         this.wisdom=10;
         this.charisma=10;
         this.className="Spearman"; 

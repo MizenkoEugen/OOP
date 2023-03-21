@@ -1,36 +1,23 @@
-package Homework.Game.Units;
+package Game.Units;
 
-import Homework.Game.Names;
+import Game.Additional.Names;
 
-public class Spearman extends Unit{
+public class Spearman extends BaseUnit {
 
-    public Spearman(String name, int hp) {
-        super(name, hp);
-        this.strength=16;
-        this.dexterity=10;
-        this.viability=10;
-        this.speed=4;
-        this.wisdom=10;
-        this.charisma=10;
-        this.className="Spearman"; 
-        this.arrival();
+    public Spearman(String name, int x, int y) {
+        super(name, x, y);
+        this.attack = 4;
+        this.defence = 5;
+        this.damage[0] = 1;
+        this.damage[1] = 3;
+        this.hp = 10;
+        this.maxHp = 10;
+        this.speed = 4;
+        this.className = "Копейщик";
     }
 
-    public Spearman() {
-        this(Names.getRandName(), 130);
+    public Spearman(int x, int y) {
+        this(Names.getRandName(), x, y);
     }
 
-    public void step(Unit target){
-        float damade=15+(float)this.strength/10*Unit.diceRoll();
-        System.out.println(this.name+" удар копьем "+target.getName());
-        target.getDamage((int)damade);
-    }
-
-    @Override
-    public void step() {
-        throw new UnsupportedOperationException("Unimplemented method 'step'");
-    }
-
-
-    
 }

@@ -1,19 +1,24 @@
-package Homework.Game.Units;
+package Game.Units;
 
-import Homework.Game.Names;
+import Game.Additional.Names;
 
-public class Sniper extends Shooter {
+public class Sniper extends Arbalester {
 
-    public Sniper(String name, int hp) {
-        super(name, hp);
-        this.dexterity = 16;
+    public Sniper(String name, int x, int y) {
+        super(name, x, y);
+        this.attack = 12;
+        this.defence = 10;
+        this.damage[0] = 8;
+        this.damage[1] = 10;
+        this.hp = 15;
+        this.maxHp = 15;
         this.speed = 9;
-        this.className = "Sniper";
-        this.arrival();
+        this.className = "Снайпер";
+        this.arrows = 3;
     }
 
-    public Sniper() {
-        this(Names.getRandName(), 100);
+    public Sniper(int x, int y) {
+        this(Names.getRandName(), x, y);
     }
 
 }

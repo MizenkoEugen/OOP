@@ -1,29 +1,23 @@
-package Homework.Game.Units;
+package Game.Units;
 
-import Homework.Game.Names;
+import Game.Additional.Names;
 
-public class Raider extends Unit{
+public class Raider extends BaseUnit {
 
-    public Raider(String name, int hp) {
-        super(name, hp);
-        this.strength=12;
-        this.dexterity=14;
-        this.viability=10;
-        this.speed=6;
-        this.wisdom=10;
-        this.charisma=10;
-        this.className="Raider"; 
-        this.arrival();
+    public Raider(String name, int x, int y) {
+        super(name, x, y);
+        this.attack = 8;
+        this.defence = 3;
+        this.damage[0] = 2;
+        this.damage[1] = 4;
+        this.hp = 10;
+        this.maxHp = 10;
+        this.speed = 6;
+        this.className = "Разбойник";
     }
 
-    public Raider() {
-        this(Names.getRandName(), 120);
+    public Raider(int x, int y) {
+        this(Names.getRandName(), x, y);
     }
 
-    public void daggerStrike(Unit target){
-        float damade=10+(float)this.dexterity/10*(float)this.strength/10*Unit.diceRoll();
-        System.out.println(this.name+" удар кинжалом "+target.getName());
-        target.getDamage((int)damade);
-    }
-    
 }

@@ -1,43 +1,24 @@
-package Homework.Game.Units;
+package Game.Units;
 
-import Homework.Game.Names;
+import Game.Additional.Names;
 
-public class Wizard extends Unit {
-    private int mana;
-    private int maxMana;
+public class Wizard extends BaseUnit {
+    public Wizard(String name, int x, int y) {
 
-    public Wizard(String name, int hp) {
-        super(name, hp);
-        this.strength = 8;
-        this.dexterity = 10;
-        this.viability = 8;
+        super(name, x, y);
+        this.attack = 17;
+        this.defence = 12;
+        this.damage[0] = -5;
+        this.damage[1] = -5;
+        this.hp = 30;
+        this.maxHp = 30;
         this.speed = 9;
-        this.wisdom = 10;
-        this.charisma = 10;
-        this.maxMana = 100;
-        this.mana = this.maxMana;
-        this.className = "Wizard";
-        this.arrival();
+        this.className = "Колдун";
+
     }
 
-    public Wizard() {
-        this(Names.getRandName(), 100);
-    }
-
-    public void step(Unit target) {
-        if (this.mana > 0) {
-            this.mana -= 5;
-            float damade = 12 + (float) this.dexterity / 10 * Unit.diceRoll();
-            System.out.println(this.name + " применяет заклинание на " + target.getName());
-            target.getDamage((int) damade);
-        } else
-            System.out.println("Манна закончилась!");
-    }
-
-    @Override
-    public String getInfo() {
-        String str = super.getInfo() + " manna " + this.mana;
-        return str;
+    public Wizard(int x, int y) {
+        this(Names.getRandName(), x, y);
     }
 
 }

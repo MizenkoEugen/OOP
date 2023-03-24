@@ -3,6 +3,8 @@ package Game.Units;
 import Game.Additional.Names;
 
 public class Wizard extends BaseUnit {
+    // private int magic;
+
     public Wizard(String name, int x, int y) {
 
         super(name, x, y);
@@ -12,8 +14,9 @@ public class Wizard extends BaseUnit {
         this.damage[1] = -5;
         this.hp = 30;
         this.maxHp = 30;
-        this.speed = 9;
+        this.speed = 8; // was 9
         this.className = "Колдун";
+        // this.magic = 1;
 
     }
 

@@ -1,7 +1,6 @@
 package Game.Interface;
 
 import java.util.ArrayList;
-
 import Game.Units.BaseUnit;
 
 public interface StepInfo {

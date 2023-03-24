@@ -1,5 +1,6 @@
 package Game.Units;
 
+import java.util.ArrayList;
 import Game.Additional.Names;
 
 public class Peasant extends BaseUnit {
@@ -24,8 +25,19 @@ public class Peasant extends BaseUnit {
     }
 
     void deliveryArr() {
-        System.out.println(this.getInfo() + " доставляет стрелы");
+        System.out.println(this.name + " доставляет стрелы");
         this.delivery = false;
+    }
+
+    @Override
+    public void step(ArrayList<BaseUnit> friends, ArrayList<BaseUnit> enemies) {
+
+        super.step(friends, enemies);
+        if (this.delivery == false) {
+            this.delivery = true;
+            System.out.println(this.name + "Снова свободен");
+        } else
+            System.out.println(this.name + "Ждет...");
     }
 
 }

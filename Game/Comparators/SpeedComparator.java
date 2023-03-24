@@ -1,7 +1,6 @@
 package Game.Comparators;
 
 import java.util.Comparator;
-
 import Game.Units.BaseUnit;
 
 /**

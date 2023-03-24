@@ -1,7 +1,6 @@
 package Game.Units;
 
 import Game.Additional.Names;
-
 import java.util.ArrayList;
 
 public class Arbalester extends BaseUnit {
@@ -31,15 +30,6 @@ public class Arbalester extends BaseUnit {
         return str;
     }
 
-    //
-    // Реализовать метод step() лучников.
-    // 3.1 Если жизнь равна нулю или стрел нет, завершить обработку.
-    // 3.2 Поиск среди противников наиболее приближённого.
-    // 3.3 Нанести среднее повреждение найденному противнику.
-    // 3.4 Найти среди своих крестьянина.
-    // 3.5 Если найден завершить метод иначе уменьшить запас стрел на одну.
-    // */
-
     @Override
     public void step(ArrayList<BaseUnit> friends, ArrayList<BaseUnit> ememies) {
         super.step(friends, ememies);
@@ -66,7 +56,6 @@ public class Arbalester extends BaseUnit {
         System.out.println(this.getName() + " ищет цель");
         for (int index = 0; index < ememies.size(); index++) {
             distanse = this.getDistanse(ememies.get(index));
-            // System.out.println(distanse+ " "+ememies.get(index).getName() );
             if (!ememies.get(index).isDead && distanse < minDistanse) {
                 targetInd = index;
                 minDistanse = distanse;
@@ -78,10 +67,6 @@ public class Arbalester extends BaseUnit {
     public void findPeasant(ArrayList<BaseUnit> friends) {
         for (int index = 0; index < friends.size(); index++) {
             BaseUnit unit = friends.get(index);
-            // if (!friends.get(index).isDead &&
-            // friends.get(index).className.equals("Крестьянин")) {
-            // if (((Peasant)friends.get(index)).delivery==true){
-            // }
             if (!unit.isDead && unit.className.equals("Крестьянин")) {
                 if (((Peasant) unit).delivery == true) {
                     ((Peasant) unit).deliveryArr();

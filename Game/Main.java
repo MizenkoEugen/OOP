@@ -1,24 +1,32 @@
 package Game;
 
+import java.util.Scanner;
 import Game.Additional.BattleField;
 
 /**
- * Создать класс с описанием координат, x и y.
- * Добавить в абстрактный класс порле с координатами и пробросить его
- * инициализацию до конструкторов персонажей.
- * Farmer farmer = new Farmer(getName(), x, y);
- * Реализовать метод step() лучников.
- * 3.1 Если жизнь равна нулю или стрел нет, завершить обработку.
- * 3.2 Поиск среди противников наиболее приближённого.
- * 3.3 Нанести среднее повреждение найденному противнику.
- * 3.4 Найти среди своих крестьянина.
- * 3.5 Если найден завершить метод иначе уменьшить запас стрел на одну.
+ * Реализовать псевдо графику используя приложенные в документах занятия файлы.
+ * (chcp 65001)
+ * Распределить функционал основной программы по методам в соответствии с SOLID.
+ * Используя класс сканер реализовать повторение хода в основной программе.
  */
 
 public class Main {
-  public static void main(String[] args) {
-    System.out.println("Game");
-    BattleField.start();
-  }
+  public static final int GANG_SIZE = 0;
 
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    int q = 0;
+    BattleField.start();
+    ConsoleView.view();
+    while (true) {
+      String command = sc.nextLine();
+      if (command.equals("q"))
+        return;
+      BattleField.nextStep();
+      ConsoleView.view();
+      q = 1;
+    }
+    // sc.close();
+  }
 }

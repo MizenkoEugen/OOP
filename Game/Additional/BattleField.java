@@ -11,19 +11,19 @@ public class BattleField {
     public static int battleStep = 0;
     public static int tm1Step = 0;
     public static int tm2Step = 0;
-
+    public static int[][] desk = new int[12][12];
     public static final int GANG_SIZE = 10;
     public static ArrayList<BaseUnit> team1 = new ArrayList<>();
     public static ArrayList<BaseUnit> team2 = new ArrayList<>();
 
     public static void start() {
 
-        fillBalanceHeroesList(team1, GANG_SIZE, "Peasant, Sniper, Arbalester", 1);
-        fillBalanceHeroesList(team2, GANG_SIZE, "Peasant, Sniper, Arbalester", 10);
+        fillBalanceHeroesList(team1, GANG_SIZE, " Spearman, Spearman, Spearman,Raider,Spearman,Sniper", 1);
+        fillBalanceHeroesList(team2, GANG_SIZE, "Spearman, Spearman,Spearman,Arbalester,Arbalester,Peasant", 10);
 
         team1.sort(new SpeedComparator());
         team2.sort(new SpeedComparator());
-
+        placeUnits();
     }
 
     public static void fillSpecialHeroesList(ArrayList<BaseUnit> list, int size, String classes, int column) {
@@ -95,19 +95,20 @@ public class BattleField {
         System.out.println("----------------");
     }
 
-    public static void nextStep() {
-        if (battleStep == 45) {
-            // debug
-            battleStep = battleStep;
-        }
+    public static int nextStep() {
+        // placeUnits();
         if (battleStep % 2 == 0) {
             tm1Step = teamStep(team1, team2, tm1Step);
-            battleStep++;
+
         } else {
             tm2Step = teamStep(team2, team1, tm2Step);
-            battleStep++;
-        }
 
+        }
+        battleStep++;
+        placeUnits();
+        return checkWinner();
+
+        // System.out.println(Arrays.deepToString(desk).replace("], ", "]\n"));
     }
 
     public static int teamStep(ArrayList<BaseUnit> mainTeam, ArrayList<BaseUnit> enTeam, int tmStep) {
@@ -116,7 +117,7 @@ public class BattleField {
         while (true) {
             if (tmStep >= mainTeam.size())
                 tmStep = 0;
-            if (mainTeam.get(tmStep).isDead() == false) {
+            if (mainTeam.get(tmStep).isAway() == false) {
                 mainTeam.get(tmStep).step(mainTeam, enTeam);
                 tmStep++;
                 return tmStep;
@@ -133,4 +134,62 @@ public class BattleField {
 
     }
 
+    public static void placeUnits() {
+        int x;
+        int y;
+        for (int[] row : desk)
+            Arrays.fill(row, 0);
+        for (BaseUnit unit : team1) {
+            x = unit.getPosition().getX();
+            y = unit.getPosition().getY();
+            if (!unit.isAway()) {
+                desk[y][x] = 1;
+            }
+        }
+        for (BaseUnit unit : team2) {
+            x = unit.getPosition().getX();
+            y = unit.getPosition().getY();
+            if (!unit.isAway()) {
+                desk[y][x] = 2;
+            }
+        }
+        // System.out.println(Arrays.deepToString(desk).replace("], ", "]\n"));
+    }
+
+    public static boolean checkDeskPosition(int x, int y) {
+        if (desk[y][x] == 0)
+            return true;
+        else
+            return false;
+
+    }
+
+    public static void nextRound() {
+        nextStep();
+        while (battleStep % 10 != 0) {
+            nextStep();
+        }
+    }
+
+    public static int checkWinner() {
+        // int winner = 0;
+        boolean alldeads = true;
+        for (BaseUnit unit : team1) {
+            if (!unit.isAway())
+                alldeads = false;
+        }
+        if (alldeads == true)
+            return 2;
+
+        else {
+            alldeads = true;
+            for (BaseUnit unit : team2) {
+                if (!unit.isAway())
+                    alldeads = false;
+            }
+            if (alldeads == true)
+                return 1;
+        }
+        return 0;
+    }
 }

@@ -6,7 +6,7 @@ import Game.Additional.Position;
 import java.util.Collections;
 
 public class ConsoleView {
-    private static int step = 0;
+    private static int step = BattleField.battleStep;
     private static final String top10 = formatDiv("a") + String.join("", Collections.nCopies(9, formatDiv("-b")))
             + formatDiv("-c");
     private static final String mid10 = formatDiv("d") + String.join("", Collections.nCopies(9, formatDiv("-e")))
@@ -22,7 +22,7 @@ public class ConsoleView {
             System.out.println(AnsiColors.ANSI_BLUE +
                     String.join("", Collections.nCopies(55, formatDiv(" "))) + "Blue Team" + AnsiColors.ANSI_RESET);
         } else {
-            System.out.print(AnsiColors.ANSI_RED + "Step: " + step + AnsiColors.ANSI_RESET);
+            System.out.print(AnsiColors.ANSI_RED + "Step: " + BattleField.battleStep + AnsiColors.ANSI_RESET);
             System.out.print(AnsiColors.ANSI_GREEN +
                     String.join("", Collections.nCopies(20, formatDiv(" "))) + "Green Team" + AnsiColors.ANSI_RESET);
             System.out.println(AnsiColors.ANSI_BLUE +

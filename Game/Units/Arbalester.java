@@ -17,7 +17,7 @@ public class Arbalester extends BaseUnit {
         this.maxHp = 10;
         this.speed = 4;
         this.className = "Арбалетчик";
-        this.arrows = 16;
+        this.arrows = 8;
     }
 
     public Arbalester(int x, int y) {
@@ -33,11 +33,16 @@ public class Arbalester extends BaseUnit {
     @Override
     public void step(ArrayList<BaseUnit> friends, ArrayList<BaseUnit> ememies) {
         super.step(friends, ememies);
-        if (!this.isDead) {
+        if (!this.isAway) {
             if (this.arrows < 1) {
+                System.out.println("У " + this.name + " закончились стрелы!");
+                if (!this.findPeasant(friends)) {
+                    System.out.println("Живых крестьян нет! " + this.name + " сбегает с поля боя! ");
+                    this.isAway = true;
+                    this.hp = 0;
+                }
+                ;
 
-                this.findPeasant(friends);
-                return;
             } else {
                 int index = this.findTarget(ememies);
                 if (index == -1) {
@@ -56,7 +61,7 @@ public class Arbalester extends BaseUnit {
         System.out.println(this.getName() + " ищет цель");
         for (int index = 0; index < ememies.size(); index++) {
             distanse = this.getDistanse(ememies.get(index));
-            if (!ememies.get(index).isDead && distanse < minDistanse) {
+            if (!ememies.get(index).isAway && distanse < minDistanse) {
                 targetInd = index;
                 minDistanse = distanse;
             }
@@ -64,18 +69,25 @@ public class Arbalester extends BaseUnit {
         return targetInd;
     }
 
-    public void findPeasant(ArrayList<BaseUnit> friends) {
+    public boolean findPeasant(ArrayList<BaseUnit> friends) {
+        boolean alifePeasants = false;
         for (int index = 0; index < friends.size(); index++) {
+
             BaseUnit unit = friends.get(index);
-            if (!unit.isDead && unit.className.equals("Крестьянин")) {
+            if (!unit.isAway && unit.className.equals("Крестьянин")) {
                 if (((Peasant) unit).delivery == true) {
                     ((Peasant) unit).deliveryArr();
                     this.arrows += 3;
-                    return;
-                }
+                    return true;
+                } else
+                    alifePeasants = true;
             }
+
         }
-        System.out.println("свободных крестьян нет");
+        if (alifePeasants)
+            System.out.println("Свободных крестьян нет");
+        return alifePeasants;
+
     }
 
     public void shooting(BaseUnit target) {

@@ -33,11 +33,30 @@ public class Peasant extends BaseUnit {
     public void step(ArrayList<BaseUnit> friends, ArrayList<BaseUnit> enemies) {
 
         super.step(friends, enemies);
-        if (this.delivery == false) {
-            this.delivery = true;
-            System.out.println(this.name + "Снова свободен");
-        } else
-            System.out.println(this.name + "Ждет...");
+        if (!checkAlifeUnits(friends)) {
+            System.out.println(this.name + " сбегает с поля боя!");
+            this.isAway = true;
+            this.hp = 0;
+            return;
+        } else {
+            if (this.delivery == false) {
+                this.delivery = true;
+                System.out.println(this.name + " снова готов нести стрелы..");
+            } else
+                System.out.println(this.name + " ждет...");
+
+        }
+    }
+
+    boolean checkAlifeUnits(ArrayList<BaseUnit> friends) {
+        boolean stayInBattle = false;
+        for (BaseUnit unit : friends) {
+
+            if (unit.isAway == false && !unit.className.equals("Крестьянин"))
+                stayInBattle = true;
+
+        }
+        return stayInBattle;
     }
 
 }

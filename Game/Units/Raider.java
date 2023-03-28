@@ -2,7 +2,7 @@ package Game.Units;
 
 import Game.Additional.Names;
 
-public class Raider extends BaseUnit{
+public class Raider extends Infantry{
 
     public Raider(String name,int x,int y) {
         super(name, x, y);
@@ -20,11 +20,5 @@ public class Raider extends BaseUnit{
     public Raider(int x,int y) {
         this(Names.getRandName(),x,y);
     }
-
-    // public void daggerStrike(BaseUnit target){
-    //     float damade=10+(float)this.defence/10*(float)this.attack/10*BaseUnit.diceRoll();
-    //     System.out.println(this.name+" удар кинжалом "+target.getName());
-    //     target.getDamage((int)damade);
-    // }
     
 }

@@ -24,7 +24,7 @@ public abstract class BaseUnit implements StepInfo {
   protected int speed;
   protected String className;
 
-  protected boolean isDead = false;
+  protected boolean isAway = false;
   
   public BaseUnit(String name, int x,int y) {
     this.name = name;
@@ -45,7 +45,7 @@ public abstract class BaseUnit implements StepInfo {
       this.hp = 0;
     System.out.println(this.name + " получил урон: " + damage + " здоровья осталось: " + this.hp);
     if (this.hp == 0)
-      this.isDead = true;
+      this.isAway = true;
   }
 
   
@@ -81,8 +81,8 @@ public Position getPosition() {
     return this.position;
 }
 
-public boolean isDead(){
-  return this.isDead;
+public boolean isAway(){
+  return this.isAway;
 }
 
 }

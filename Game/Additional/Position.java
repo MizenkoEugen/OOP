@@ -30,6 +30,22 @@ public class Position {
         this.y = y;
     }
 
+    public void moveRight() {
+        this.x = this.x + 1;
+    }
+
+    public void moveLeft() {
+        this.x = this.x - 1;
+    }
+
+    public void moveUp() {
+        this.y = this.y + 1;
+    }
+
+    public void moveDown() {
+        this.y = this.y - 1;
+    }
+
     public boolean isEquals(Object obj) {
         if (this == obj)
             return true;

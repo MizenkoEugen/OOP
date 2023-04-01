@@ -1,8 +1,7 @@
-package Game.Additional;
+package com.mygdx.game.Game.Additional;
 
-import Game.Units.*;
-import Game.Comparators.SpeedComparator;
-
+import com.mygdx.game.Game.Comparators.SpeedComparator;
+import com.mygdx.game.Game.Units.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -21,8 +20,8 @@ public class BattleField {
         fillBalanceHeroesList(team1, GANG_SIZE, "Spearman, Spearman, Spearman, Spearman, Spearman, Sniper", 1);
         fillBalanceHeroesList(team2, GANG_SIZE, "Raider, Raider, Raider, Raider, Arbalester, Peasant", 10);
 
-        team1.sort(new SpeedComparator());
-        team2.sort(new SpeedComparator());
+//        team1.sort(new SpeedComparator());
+//        team2.sort(new SpeedComparator());
         placeUnits();
     }
 
@@ -33,7 +32,7 @@ public class BattleField {
         int r;
         int row = 1;
         for (int i = 0; i < size; i++) {
-            r = rand.nextInt(0, HerList.size());
+            r = rand.nextInt(HerList.size());
             if (HerList.get(r).equals("Peasant")) {
                 list.add(new Peasant(column, row));
             } else if (HerList.get(r).equals("Arbalester")) {

@@ -1,7 +1,7 @@
-package Game;
+package com.mygdx.game.Game;
 
-import Game.Additional.BattleField;
-import Game.Additional.Position;
+import com.mygdx.game.Game.Additional.BattleField;
+import com.mygdx.game.Game.Additional.Position;
 
 import java.util.Collections;
 

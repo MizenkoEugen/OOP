@@ -1,8 +1,7 @@
-package Game.Units;
+package com.mygdx.game.Game.Units;
 
+import com.mygdx.game.Game.Additional.BattleField;
 import java.util.ArrayList;
-
-import Game.Additional.BattleField;
 
 public abstract class Infantry extends BaseUnit {
 

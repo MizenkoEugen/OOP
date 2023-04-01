@@ -1,10 +1,9 @@
-package Game.Units;
+package com.mygdx.game.Game.Units;
 
+import com.mygdx.game.Game.Additional.Names;
+import com.mygdx.game.Game.Additional.Position;
+import com.mygdx.game.Game.Interface.StepInfo;
 import java.util.ArrayList;
-
-import Game.Additional.Names;
-import Game.Additional.Position;
-import Game.Interface.StepInfo;
 
 public abstract class BaseUnit implements StepInfo {
   /**

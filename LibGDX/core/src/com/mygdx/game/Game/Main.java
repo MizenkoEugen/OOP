@@ -1,11 +1,9 @@
-package Game;
+package com.mygdx.game.Game;
+
+import com.mygdx.game.Game.Additional.BattleField;
 
 import java.util.Scanner;
-import Game.Additional.BattleField;
 
-/**
- * Реализовать степ для пехоты по семинару.
- */
 public class Main {
 
   public static void main(String[] args) {
@@ -22,7 +20,6 @@ public class Main {
         if (n != 0)
           System.out.println("Победила команда " + n);
       }
-      sc.close();
     }
   }
 }
